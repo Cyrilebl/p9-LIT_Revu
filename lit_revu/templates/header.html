@@ -1,0 +1,16 @@
+{% block content %}
+<header>
+  <h1>LITRevu</h1>
+  {% if user.is_authenticated %}
+  <nav>
+    <a href="{% url 'ticket-list' %}">Accueil</a>
+    <a href="">Profil</a>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">Déconnexion</button>
+    </form>
+    <a href="{% url 'password_change' %}">Modifier son mot de passe</a>
+  </nav>
+  {% endif %}
+</header>
+{% endblock %}

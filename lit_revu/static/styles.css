@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,400&display=swap");
+
+:root {
+  --background: #f2f4f7;
+  --foreground: #080809;
+  --card: #ffffff;
+  --secondary-foregorund: #6d7073; /* pour date, username */
+  --btn-add: #0064d1;
+  --btn_background: #ebf5ff;
+  --delete-btn-background: #e2e5e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", serif;
+  margin: 56px 160px;
+  color: var(--black);
+  background-color: var(--background);
+}
+
+main {
+  margin: 50px 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+header nav form button {
+  font-family: "Josefin Sans", serif;
+  font-size: 1em;
+  background-color: var(--white);
+  border: none;
+  cursor: pointer;
+}
