@@ -4,11 +4,25 @@
 :root {
   --background: #f2f4f7;
   --foreground: #080809;
+
   --card: #ffffff;
-  --secondary-foregorund: #6d7073; /* pour date, username */
-  --btn-add: #0064d1;
+
+  --primary: #0866ff;
+  --primary-foreground: #ffffff;
+  --primary-hover: #2280ff;
+
+  --secondary-foreground: #6d7073; /* pour date, username */
+
+  --succes: #42b72a;
+  --succes-hover: #3a9c26;
+
+  --error: #f02849;
+
   --btn_background: #ebf5ff;
   --delete-btn-background: #e2e5e9;
+
+  --border: #dadde1;
+  --placeholder: #90949c;
 }
 
 * {
@@ -20,7 +34,7 @@
 body {
   font-family: "Josefin Sans", serif;
   margin: 56px 160px;
-  color: var(--black);
+  color: var(--foreground);
   background-color: var(--background);
 }
 
@@ -28,27 +42,75 @@ main {
   margin: 50px 0;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h1 {
+  font-size: 2.5em;
 }
 
-header nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-header nav a {
+a {
   text-decoration: none;
-  color: var(--black);
+  color: inherit;
 }
 
-header nav form button {
-  font-family: "Josefin Sans", serif;
+form input {
   font-size: 1em;
-  background-color: var(--white);
+  border-radius: 6px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+}
+
+form label {
+  display: none;
+}
+
+form ::placeholder {
+  color: var(--placeholder);
+  font-size: 16px;
+}
+
+hr {
+  height: 0.01em;
+  background-color: var(--border);
   border: none;
+  margin-bottom: 22px;
+}
+
+button {
+  color: var(--primary-foreground);
+  font-size: 1.1em;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.primary-button {
+  width: 100%;
+  background-color: var(--primary);
+}
+
+.primary-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.secondary-button {
+  background-color: var(--succes);
+}
+
+.secondary-button:hover {
+  background-color: var(--succes-hover);
+}
+
+.link {
+  display: block;
+  margin: 20px 0;
+  color: var(--primary);
+  text-align: center;
+  font-size: 15px;
+}
+
+.link:hover {
+  text-decoration: underline;
 }

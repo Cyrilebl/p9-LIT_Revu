@@ -1,4 +1,6 @@
-{% block content %}
+{% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'header.css' %}" />
+{% endblock %} {% block content %}
 <header>
   <h1>LITRevu</h1>
   {% if user.is_authenticated %}

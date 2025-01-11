@@ -1,8 +1,15 @@
-{% extends "base.html" %} {% block content %}
-<h2>Inscription</h2>
-{% if form.errors %} {{ form.errors }} {% endif %}
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">S'inscrire</button>
-</form>
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'authentication/signup.css' %}" />
+{% endblock %} {% block content %}
+<div class="signup">
+  <h2>Créer un compte</h2>
+  <p>C'est simple et rapide.</p>
+  <hr />
+  {% if form.errors %} {{ form.errors }} {% endif %}
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button class="secondary-button" type="submit">S'inscrire</button>
+  </form>
+  <a class="link" href="{% url 'login' %}">Vous avez déjà un compte ?</a>
+</div>
 {% endblock %}
