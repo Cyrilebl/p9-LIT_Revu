@@ -88,7 +88,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "authentication.validators.ContainsLetterValidator",
+        "NAME": "authentication.validators.ContainsUppercaseValidator",
     },
     {
         "NAME": "authentication.validators.ContainsNumberValidator",
@@ -124,5 +124,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "authentication.User"
 
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "ticket-list"
+LOGIN_REDIRECT_URL = "ticket_list"
 LOGOUT_REDIRECT_URL = "login"
