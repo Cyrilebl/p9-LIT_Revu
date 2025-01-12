@@ -1,10 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Livres</h2>
+<h2>Accueil</h2>
 <ul>
   {% for ticket in tickets %}
   <li>
-    <a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.title }}</a>
+    <a href="{% url 'ticket_detail' ticket.id %}">{{ ticket.title }}</a>
+    <li>Review</li>
+    <li>{{ ticket.description }}</li>
+    <li>{{ ticket.image }}</li>
+    <li>{{ ticket.time_created }}</li>
   </li>
   {% endfor %}
 </ul>
