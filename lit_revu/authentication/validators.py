@@ -1,11 +1,12 @@
 from django.core.exceptions import ValidationError
 
 
-class ContainsLetterValidator:
+class ContainsUppercaseValidator:
     def validate(self, password, user=None):
-        if not any(char.isalpha() for char in password):
+        if not any(char.isupper() for char in password):
             raise ValidationError(
-                "Le mot de passe doit contenir une lettre", code="password_no_letters"
+                "Le mot de passe doit contenir au moins une majuscule.",
+                code="password_no_uppercase",
             )
 
     def get_help_text(self):
