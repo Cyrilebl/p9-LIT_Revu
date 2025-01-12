@@ -1,0 +1,13 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile .primary-button {
+  font-size: 1em;
+}
+
+.profile .link {
+  margin: 6px 0 10px 0;
+}
