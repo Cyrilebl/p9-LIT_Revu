@@ -7,15 +7,13 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 40px;
 }
 
-nav form button {
-  font-family: "Josefin Sans", serif;
-  font-size: 1em;
-  background-color: var(--background);
-  color: var(--foreground);
-  font-weight: 400;
-  border: none;
-  cursor: pointer;
+nav a {
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: var(--primary);
 }
