@@ -2,11 +2,11 @@
 <link rel="stylesheet" href="{% static 'authentication/done.css' %}" />
 {% endblock %} {% block content %}
 
-<div class="done">
+<div class="done card">
   <img src="{% static 'assets/checked-icon.png' %}" alt="LIT Revu Banner" />
   <h2>Merci pour votre inscription !</h2>
   <p>Félicitations, votre compte a été crée avec succès.</p>
-  <button class="secondary-button">
+  <button class="btn secondary-button">
     <a href="{% url 'login' %}">Continuer</a>
   </button>
 </div>

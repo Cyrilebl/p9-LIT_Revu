@@ -2,11 +2,13 @@
 <link rel="stylesheet" href="{% static 'header.css' %}" />
 {% endblock %} {% block content %}
 <header>
-  <h1>LITRevu</h1>
+  <h1><a href="{% url 'ticket_list' %}">LitRevu</a></h1>
   {% if user.is_authenticated %}
   <nav>
     <a href="{% url 'ticket_list' %}">Accueil</a>
-    <a href="">Mes avis</a>
+    <a href="{% url 'ticket_create' %}">Créer une publication</a>
+    <a href="{% url 'user_posts' request.user.username %}">Mes posts</a>
+    <a>Abonnés</a>
     <a href="{% url 'profile' %}">Profil</a>
   </nav>
   {% endif %}

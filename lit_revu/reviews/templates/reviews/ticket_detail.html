@@ -1,9 +1,0 @@
-{% extends 'base.html' %} {% block content %}
-
-<h2>{{ ticket.title }}</h2>
-<ul>
-  <li>{{ ticket.description }}</li>
-</ul>
-<a href="{% url 'ticket_list' %}">Retour</a>
-
-{% endblock %}

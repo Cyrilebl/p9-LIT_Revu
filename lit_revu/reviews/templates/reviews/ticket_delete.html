@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'reviews/ticket-delete.css' %}" />
+{% endblock %} {% block content %}
+<div class="delete card">
+  <h2>Suppression</h2>
+  <p>
+    Êtes-vous sûr de vouloir supprimer la publication {{ticket.title|title}} ?
+  </p>
+  <div class="delete-btn">
+    <form action="" method="post">
+      {% csrf_token %}
+      <button
+        class="btn secondary-button"
+        type="submit"
+        aria-label="Confirmer la suppression"
+      >
+        Oui
+      </button>
+    </form>
+    <a class="btn third-button" href="{% url 'ticket_list' %}">Non</a>
+  </div>
+</div>
+{% endblock %}

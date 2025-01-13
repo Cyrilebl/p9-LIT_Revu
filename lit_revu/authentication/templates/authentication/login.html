@@ -2,14 +2,14 @@
 <link rel="stylesheet" href="{% static 'authentication/login.css' %}" />
 {% endblock %} {% block content %}
 
-<div class="login">
+<div class="login card">
   <form method="post">
     {% csrf_token %} {{ form.as_p }}
-    <button class="primary-button" type="submit">Se connecter</button>
+    <button class="btn primary-button" type="submit">Se connecter</button>
   </form>
   <a class="link" href="{% url 'password_change' %}">Mot de passe oublié ?</a>
   <hr />
-  <button class="secondary-button">
+  <button class="btn secondary-button">
     <a href="{% url 'signup' %}">Créer un compte</a>
   </button>
 </div>

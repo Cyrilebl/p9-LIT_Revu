@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'reviews/tickets.css' %}" />
 {% endblock %} {% block content %}
 <div class="ticket-list">
-  {% for ticket in tickets %}
+  {% if tickets %} {% for ticket in tickets %}
   <div class="ticket-card">
     <div class="ticket-card__header">
       <p>Posté par <strong>{{ ticket.user.username }}</strong></p>
@@ -17,7 +17,15 @@
       {% endif %}
       <p>{{ ticket.description }}</p>
     </div>
+    <div class="ticket-card__button">
+      <a class="btn secondary-button" href="{% url 'ticket_update' ticket.id %}"
+        >Modifier</a
+      >
+      <a class="btn third-button" href="{% url 'ticket_delete' ticket.id %}"
+        >Supprimer</a
+      >
+    </div>
   </div>
-  {% endfor %}
+  {% endfor %} {% endif %}
 </div>
 {% endblock %}
