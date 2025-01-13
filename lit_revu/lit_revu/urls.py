@@ -9,6 +9,9 @@ from django.contrib.auth.views import (
     PasswordChangeDoneView,
 )
 from authentication.forms import LoginForm, NewPasswordForm
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     # Authentication app
@@ -47,6 +50,27 @@ urlpatterns = [
         name="password_change_done",
     ),
     # Reviews app
+    # Create
+    path("tickets/new/", reviews.views.ticket_create, name="ticket_create"),
+    # Read
     path("tickets/", reviews.views.ticket_list, name="ticket_list"),
-    path("tickets/<int:ticket_id>/", reviews.views.ticket_detail, name="ticket_detail"),
+    path(
+        "tickets/<int:ticket_id>/", reviews.views.ticket_content, name="ticket_content"
+    ),
+    # Update
+    path(
+        "tickets/<int:ticket_id>/edit/",
+        reviews.views.ticket_update,
+        name="ticket_update",
+    ),
+    # Delete
+    path(
+        "tickets/<int:ticket_id>/delete/",
+        reviews.views.ticket_delete,
+        name="ticket_delete",
+    ),
+    path("tickets/<str:username>/", reviews.views.user_posts, name="user_posts"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
