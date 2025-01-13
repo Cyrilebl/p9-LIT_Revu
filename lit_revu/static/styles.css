@@ -17,9 +17,7 @@
   --succes-hover: #3a9c26;
 
   --error: #f02849;
-
-  --btn_background: #ebf5ff;
-  --delete-btn-background: #e2e5e9;
+  --error-hover: #c0223b;
 
   --border: #dadde1;
   --placeholder: #90949c;
@@ -33,17 +31,19 @@
 
 body {
   font-family: "Josefin Sans", serif;
-  margin: 56px 160px;
   color: var(--foreground);
   background-color: var(--background);
+  margin-top: 100px;
 }
 
 main {
-  margin: 80px 0;
+  margin: 128px 256px 44px 256px;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-family: "Roboto", serif;
+  font-size: 2.8em;
+  color: var(--primary);
 }
 
 a {
@@ -71,10 +71,9 @@ hr {
   height: 0.01em;
   background-color: var(--border);
   border: none;
-  margin-bottom: 22px;
 }
 
-button {
+.btn {
   font-family: "Roboto", serif;
   color: var(--primary-foreground);
   font-size: 1.1em;
@@ -103,6 +102,14 @@ button {
   background-color: var(--succes-hover);
 }
 
+.third-button {
+  background-color: var(--error);
+}
+
+.third-button:hover {
+  background-color: var(--error-hover);
+}
+
 .link {
   display: block;
   color: var(--primary);
@@ -120,10 +127,7 @@ button {
 }
 
 /* Login / Signup / New password / Change done */
-.login,
-.signup,
-.password-change,
-.done {
+.card {
   position: absolute;
   top: 50%;
   left: 50%;

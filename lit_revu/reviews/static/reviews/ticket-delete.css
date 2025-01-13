@@ -1,0 +1,14 @@
+.delete h2 {
+  color: var(--primary);
+}
+
+.delete p {
+  margin: 18px 0;
+}
+
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
