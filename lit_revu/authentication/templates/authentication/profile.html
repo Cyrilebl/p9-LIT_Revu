@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'authentication/profile.css' %}" />
 {% endblock %} {% block content %}
 
-<div class="profile">
+<div class="profile secondary-card">
   <p><strong>Nom d'utilisateur : </strong>{{ request.user.username }}</p>
   <p><strong>Nom : </strong>{{ request.user.last_name }}</p>
   <p><strong>Prénom : </strong>{{ request.user.first_name }}</p>
