@@ -5,11 +5,31 @@
   <h1><a href="{% url 'ticket_list' %}">LitRevu</a></h1>
   {% if user.is_authenticated %}
   <nav>
-    <a href="{% url 'ticket_list' %}">Accueil</a>
-    <a href="{% url 'ticket_create' %}">Créer une publication</a>
-    <a href="{% url 'user_posts' request.user.username %}">Mes posts</a>
-    <a>Abonnés</a>
-    <a href="{% url 'profile' %}">Profil</a>
+    <a
+      href="{% url 'ticket_list' %}"
+      class="{% if request.resolver_match.url_name == 'ticket_list' %}active{% endif %}"
+      >Accueil</a
+    >
+    <a
+      href="{% url 'ticket_create' %}"
+      class="{% if request.resolver_match.url_name == 'ticket_create' %}active{% endif %}"
+      >Créer une publication</a
+    >
+    <a
+      href="{% url 'user_posts' request.user.username %}"
+      class="{% if request.resolver_match.url_name == 'user_posts' %}active{% endif %}"
+      >Mes posts</a
+    >
+    <a
+      href="{% url 'user_followers' request.user.username %}"
+      class="{% if request.resolver_match.url_name == 'user_followers' %}active{% endif %}"
+      >Abonnés</a
+    >
+    <a
+      href="{% url 'profile' %}"
+      class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"
+      >Profil</a
+    >
   </nav>
   {% endif %}
 </header>

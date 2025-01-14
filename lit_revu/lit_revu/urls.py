@@ -69,7 +69,15 @@ urlpatterns = [
         reviews.views.ticket_delete,
         name="ticket_delete",
     ),
+    # User posts
     path("tickets/<str:username>/", reviews.views.user_posts, name="user_posts"),
+    # User followers / Read, Create, Delete
+    path("follow/<str:username>/", reviews.views.user_followers, name="user_followers"),
+    path(
+        "follow/<str:username>/delete/<int:follow_id>",
+        reviews.views.user_followers_delete,
+        name="user_followers_delete",
+    ),
 ]
 
 if settings.DEBUG:

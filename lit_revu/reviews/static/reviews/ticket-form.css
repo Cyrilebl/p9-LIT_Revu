@@ -1,0 +1,21 @@
+.ticket-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ticket-form input {
+  height: 32px;
+  width: 100%;
+}
+
+.ticket-form textarea {
+  resize: none;
+  width: 100%;
+  height: 192px;
+  padding: 10px 16px;
+}
+
+.ticket-form input[type="file"] {
+  padding-top: 2px;
+}

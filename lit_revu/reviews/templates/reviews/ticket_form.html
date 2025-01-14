@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'reviews/ticket-form.css' %}" />
+{% endblock %} {% block content %}
+<div class="ticket-form card">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+    <button class="btn secondary-button" type="submit">Envoyer</button>
+  </form>
+</div>
+{% endblock %}

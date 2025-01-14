@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'reviews/user-followers.css' %}" />
+{% endblock %} {% block content %}
+<div class="follow secondary-card">
+  <div>
+    <h2>Followers :</h2>
+    {% if followers %}
+    <ul>
+      {% for follow in followers %}
+      <li>{{ follow.user.username }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="no-content">Personne ne vous suit pour le moment</p>
+    {% endif %}
+  </div>
+  <div>
+    <h2>Suivi(e)s :</h2>
+    {% if following %}
+    <ul>
+      {% for follow in following %}
+      <div class="follow__delete">
+        <li>{{ follow.followed_user.username }}</li>
+        <form
+          action="{% url 'user_followers_delete' username=target_user.username follow_id=follow.id %}"
+          method="post"
+          style="display: inline"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn third-button">Ne plus suivre</button>
+        </form>
+      </div>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="no-content">Aucun abonnement pour le moment</p>
+    {% endif %}
+  </div>
+  <div>
+    <h2>Utilisateurs :</h2>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn secondary-button">Suivre</button>
+    </form>
+    {% if messages %} {% for message in messages %}
+    <p class="message {{ message.tags }}">{{ message }}</p>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+{% endblock %}
