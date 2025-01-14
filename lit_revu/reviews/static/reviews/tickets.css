@@ -4,15 +4,6 @@
   gap: 18px;
 }
 
-.ticket-card {
-  padding: 16px;
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  background-color: var(--card);
-}
-
 .ticket-card hr {
   margin: 10px 0 18px 0;
 }
@@ -56,8 +47,16 @@
   margin-top: 14px;
 }
 
-.ticket-card__button .secondary-button,
-.ticket-card__button .third-button {
+.ticket-card__button .btn {
   padding: 6px 14px;
   font-size: 0.8em;
+}
+
+.ticket-list .card {
+  padding-top: 24px;
+  padding-bottom: 34px;
+}
+
+.ticket-list .no-content p {
+  margin-bottom: 28px;
 }

@@ -3,7 +3,7 @@
 {% endblock %} {% block content %}
 <div class="ticket-list">
   {% for ticket in tickets %}
-  <div class="ticket-card">
+  <div class="ticket-card secondary-card">
     <div class="ticket-card__header">
       <p>Posté par <strong>{{ ticket.user.username }}</strong></p>
       <p>{{ ticket.time_created }}</p>

@@ -3,7 +3,7 @@
 {% endblock %} {% block content %}
 <div class="ticket-list">
   {% if tickets %} {% for ticket in tickets %}
-  <div class="ticket-card">
+  <div class="ticket-card secondary-card">
     <div class="ticket-card__header">
       <p>Posté par <strong>{{ ticket.user.username }}</strong></p>
       <p>{{ ticket.time_created }}</p>
@@ -26,6 +26,12 @@
       >
     </div>
   </div>
-  {% endfor %} {% endif %}
+  {% endfor %} {% else %}
+  <div class="card no-content">
+    <p>Aucune publication pour le moment</p>
+    <a class="btn secondary-button" href="{% url 'ticket_create' %}">
+      Créer une publication
+    </a>
+  </div>
 </div>
-{% endblock %}
+{% endif %} {% endblock %}
