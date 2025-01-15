@@ -38,7 +38,7 @@ urlpatterns = [
         PasswordChangeView.as_view(
             form_class=NewPasswordForm,
             template_name="authentication/password_change_form.html",
-            success_url="profile/password_change/done",
+            success_url="done/",
         ),
         name="password_change",
     ),
@@ -52,6 +52,11 @@ urlpatterns = [
     # Reviews app
     # Create
     path("tickets/new/", reviews.views.ticket_create, name="ticket_create"),
+    path(
+        "tickets/review/new/<int:ticket_id>/",
+        reviews.views.review_create,
+        name="review_create",
+    ),
     # Read
     path("tickets/", reviews.views.ticket_list, name="ticket_list"),
     path(

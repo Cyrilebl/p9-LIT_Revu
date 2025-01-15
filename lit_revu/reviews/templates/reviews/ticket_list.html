@@ -1,23 +1,26 @@
 {% extends 'base.html' %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'reviews/tickets.css' %}" />
+<link rel="stylesheet" href="{% static 'reviews/ticket-list.css' %}" />
 {% endblock %} {% block content %}
 <div class="ticket-list">
+  {% if tickets %}
   {% for ticket in tickets %}
-  <div class="ticket-card secondary-card">
-    <div class="ticket-card__header">
-      <p>Posté par <strong>{{ ticket.user.username }}</strong></p>
-      <p>{{ ticket.time_created }}</p>
-    </div>
-    <hr />
-    <h3 class="ticket-card__title">{{ ticket.title|title }}</h3>
-    <p class="ticket-card__review">Review</p>
-    <div class="ticket-card__content">
-      {% if ticket.image %}
-      <img src="{{ ticket.image.url }}" alt="Image de {{ ticket.title }}" />
-      {% endif %}
-      <p>{{ ticket.description }}</p>
-    </div>
+  <div class="secondary-card">
+
+    {% include "includes/ticket_content.html" %}
+
+    {% if ticket.review_set.exists %}
+      {% include "includes/review_list.html" %}
+    {% endif %}
+
   </div>
   {% endfor %}
+  {% else %}
+  <div class="card no-content">
+    <p>Aucune publication pour le moment</p>
+    <a class="btn secondary-button" href="{% url 'ticket_create' %}">
+      Créer une publication
+    </a>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}

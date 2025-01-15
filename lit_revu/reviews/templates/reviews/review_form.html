@@ -2,10 +2,10 @@
 <link rel="stylesheet" href="{% static 'reviews/forms.css' %}" />
 {% endblock %} {% block content %}
 <div class="ticket-form card">
-  <form method="post" enctype="multipart/form-data">
+  <form method="post">
     {% csrf_token %} {{ form.as_p }}
-    <button class="btn secondary-button" type="submit">
-      {% if ticket %}Mettre à jour{% else %}Publier{% endif %}
+    <button type="submit" class="btn secondary-button">
+      {% if review %}Mettre à jour{% else %}Publier{% endif %}
     </button>
   </form>
 </div>

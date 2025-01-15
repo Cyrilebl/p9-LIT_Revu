@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ticket, UserFollows
+from .models import Ticket, Review, UserFollows
 from authentication.models import User
 
 
@@ -12,6 +12,20 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
         exclude = ("user",)
+
+
+class ReviewForm(forms.ModelForm):
+    headline = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Titre"}))
+    body = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Description"}))
+    rating = forms.ChoiceField(
+        choices=[(i, str(i)) for i in range(6)],
+        widget=forms.Select(attrs={"placeholder": "Note"}),
+        label="Note",
+    )
+
+    class Meta:
+        model = Review
+        exclude = ("user", "ticket")
 
 
 class UserFollowsForm(forms.ModelForm):

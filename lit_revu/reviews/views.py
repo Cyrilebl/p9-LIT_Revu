@@ -1,9 +1,12 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Ticket, UserFollows
-from .forms import TicketForm, UserFollowsForm
+from .models import Ticket, Review, UserFollows
+from .forms import TicketForm, ReviewForm, UserFollowsForm
 from django.contrib.auth.decorators import login_required
 from authentication.models import User
+
+
+# Tickets
 
 
 # Create
@@ -32,7 +35,7 @@ def ticket_list(request):
 @login_required
 def ticket_content(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
-    return render(request, "reviews/ticket_content.html", {"ticket": ticket})
+    return render(request, "reviews/ticket.html", {"ticket": ticket})
 
 
 # Update
@@ -47,7 +50,7 @@ def ticket_update(request, ticket_id):
     else:
         form = TicketForm(instance=ticket)
 
-    return render(request, "reviews/ticket_form.html", {"form": form})
+    return render(request, "reviews/ticket_form.html", {"form": form, "ticket": ticket})
 
 
 # Delete
@@ -70,7 +73,60 @@ def user_posts(request, username):
         "user_profile": user,
         "tickets": tickets,
     }
-    return render(request, "reviews/user_posts.html", context)
+    return render(request, "reviews/ticket_list.html", context)
+
+
+# User comments
+
+
+# Create
+@login_required
+def review_create(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
+            review.save()
+            return redirect("ticket_content", ticket.id)
+    else:
+        form = ReviewForm()
+
+    return render(request, "reviews/review_form.html", {"form": form, "ticket": ticket})
+
+
+# Read
+@login_required
+def review_list(request):
+    reviews = Review.objects.all()
+    return render(request, "reviews/ticket_list.html", {"reviews": reviews})
+
+
+# Update
+@login_required
+def review_update(request, ticket_id, review_id):
+    review = Review.objects.get(id=review_id, user=request.user)
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect("ticket_content", ticket_id)
+    else:
+        form = ReviewForm(instance=review)
+
+    return render(request, "reviews/review_form.html", {"form": form})
+
+
+# Delete
+@login_required
+def ticket_delete(request, review_id):
+    review = Review.objects.get(id=review_id, user=request.user)
+    if request.method == "POST":
+        review.delete()
+        return redirect("ticket_list")
+    return render(request, "reviews/ticket_delete.html", {"review": review})
 
 
 # User followers
