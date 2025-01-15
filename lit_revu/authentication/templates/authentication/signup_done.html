@@ -6,8 +6,6 @@
   <img src="{% static 'assets/checked-icon.png' %}" alt="LIT Revu Banner" />
   <h2>Merci pour votre inscription !</h2>
   <p>Félicitations, votre compte a été crée avec succès.</p>
-  <button class="btn secondary-button">
-    <a href="{% url 'login' %}">Continuer</a>
-  </button>
+  <a class="btn secondary-button" href="{% url 'login' %}">S'identifier</a>
 </div>
 {% endblock %}

@@ -5,3 +5,7 @@
 .done p {
   margin: 20px 0 30px 0;
 }
+
+.done .secondary-button {
+  display: inline-block;
+}
