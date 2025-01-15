@@ -1,27 +1,25 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'reviews/tickets.css' %}" />
-{% endblock %} {% block content %}
-<div class="ticket-card secondary-card">
+<div class="ticket-card">
   <div class="ticket-card__header">
     <p>Posté par <strong>{{ ticket.user.username }}</strong></p>
     <p>{{ ticket.time_created }}</p>
   </div>
   <hr />
-  <h3 class="ticket-card__title">{{ ticket.title|title }}</h3>
-  <p class="ticket-card__review">Review</p>
+  <h2 class="ticket-card__title">{{ ticket.title|title }}</h2>
   <div class="ticket-card__content">
     {% if ticket.image %}
     <img src="{{ ticket.image.url }}" alt="Image de {{ ticket.title }}" />
     {% endif %}
-    <p>{{ ticket.description }}</p>
+    <p>{{ ticket.description|title }}</p>
   </div>
   <div class="ticket-card__button">
+    <a class="btn" href="{% url 'review_create' ticket.id %}">Commenter</a>
+    {% if request.user == ticket.user %}
     <a class="btn secondary-button" href="{% url 'ticket_update' ticket.id %}"
       >Modifier</a
     >
     <a class="btn third-button" href="{% url 'ticket_delete' ticket.id %}"
       >Supprimer</a
     >
+    {% endif %}
   </div>
 </div>
-{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'reviews/ticket-list.css' %}" />
+{% endblock %} {% block content %}
+<div class="secondary-card">
+    {% include "includes/ticket_content.html" %}
+
+    {% if ticket.review_set.exists %}
+      {% include "includes/review_list.html" %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

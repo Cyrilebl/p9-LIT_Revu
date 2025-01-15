@@ -1,11 +1,12 @@
-.ticket-list {
+.ticket-list,
+.ticket-review {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
 .ticket-card hr {
-  margin: 10px 0 18px 0;
+  margin: 10px 0 20px 0;
 }
 
 .ticket-card__header {
@@ -15,12 +16,9 @@
   font-style: italic;
 }
 
-.ticket-card__review {
-  margin: 10px 0 20px 0;
-}
-
 .ticket-card__title {
   font-size: 1.5em;
+  margin-bottom: 12px;
 }
 
 .ticket-card__content {
@@ -33,10 +31,6 @@
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
   border-radius: 4px;
-}
-
-.ticket-card__content p {
-  margin-top: 8px;
 }
 
 .ticket-card__button {
@@ -52,6 +46,14 @@
   font-size: 0.8em;
 }
 
+.ticket-card__button .btn:first-of-type {
+  background-color: var(--secondary-foreground);
+}
+
+.ticket-card__button .btn:first-of-type:hover {
+  background-color: var(--placeholder);
+}
+
 .ticket-list .card {
   padding-top: 24px;
   padding-bottom: 34px;
@@ -59,4 +61,18 @@
 
 .ticket-list .no-content p {
   margin-bottom: 28px;
+}
+
+.ticket-review hr {
+  margin: 4px 0 10px 0;
+}
+
+.ticket-review__title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ticket-review__content {
+  margin: 8px 0 4px 0;
 }

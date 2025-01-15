@@ -1,0 +1,17 @@
+<div class="ticket-review">
+  <h3>Commentaires</h3>
+  {% for review in ticket.review_set.all %}
+  <div>
+    <div class="ticket-card__header">
+      <p>Posté par <strong>{{ review.user.username }}</strong></p>
+      <p>{{ review.time_created|date:"d/m/Y H:i" }}</p>
+    </div>
+    <hr />
+    <div class="ticket-review__title">
+      <p>{{ review.rating }}/5</p>
+      <h4>{{ review.headline|title }}</h4>
+    </div>
+    <p class="ticket-review__content">{{ review.body|title }}</p>
+  </div>
+  {% endfor %}
+</div>

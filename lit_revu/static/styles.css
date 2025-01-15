@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,400&display=swap");
 
 :root {
+  --font-primary: "Josefin Sans", serif;
+  --font-secondary: "Roboto", serif;
+
   --background: #f2f4f7;
   --foreground: #080809;
 
@@ -30,7 +33,7 @@
 }
 
 body {
-  font-family: "Josefin Sans", serif;
+  font-family: var(--font-primary);
   color: var(--foreground);
   background-color: var(--background);
   margin-top: 100px;
@@ -41,7 +44,7 @@ main {
 }
 
 h1 {
-  font-family: "Roboto", serif;
+  font-family: var(--font-secondary);
   font-size: 2.8em;
   color: var(--primary);
 }
@@ -53,7 +56,7 @@ a {
 
 form input,
 form textarea {
-  font-family: "Roboto", serif;
+  font-family: var(--font-secondary);
   font-size: 1em;
   border-radius: 6px;
   padding: 0 14px;
@@ -76,7 +79,7 @@ hr {
 }
 
 .btn {
-  font-family: "Roboto", serif;
+  font-family: var(--font-secondary);
   color: var(--primary-foreground);
   font-size: 1.1em;
   font-weight: 700;
@@ -86,6 +89,7 @@ hr {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .primary-button {
@@ -128,7 +132,6 @@ hr {
   list-style: none;
 }
 
-/* Login / Signup / New password / Change done */
 .card {
   position: absolute;
   top: 50%;
