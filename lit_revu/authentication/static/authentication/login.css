@@ -1,3 +1,13 @@
+.login h2 {
+  font-size: 1.7em;
+  margin-top: 20px;
+}
+
+.login > p {
+  font-size: 1.1em;
+  margin: 10px 0 48px 0;
+}
+
 .login form {
   display: flex;
   flex-direction: column;
@@ -20,10 +30,7 @@ form input:focus {
 }
 
 .login .secondary-button {
+  display: inline-block;
   font-size: 1em;
-  margin-top: 22px;
-}
-
-.login .link {
-  margin: 20px 0;
+  margin-top: 28px;
 }
