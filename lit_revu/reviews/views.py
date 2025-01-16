@@ -28,7 +28,13 @@ def ticket_create(request):
 # Read
 @login_required
 def ticket_list(request):
-    tickets = Ticket.objects.all()
+    followed_by_user = UserFollows.objects.filter(user=request.user).values_list(
+        "followed_user", flat=True
+    )
+    tickets = Ticket.objects.filter(
+        user__in=list(followed_by_user) + [request.user.id]
+    ).order_by("-time_created")
+
     return render(request, "reviews/ticket_list.html", {"tickets": tickets})
 
 
@@ -43,6 +49,9 @@ def ticket_content(request, ticket_id):
 def ticket_update(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == "POST":
+        if request.FILES.get("image") and ticket.image:
+            ticket.image.delete(save=False)
+
         form = TicketForm(request.POST, request.FILES, instance=ticket)
         if form.is_valid():
             form.save()
@@ -58,9 +67,11 @@ def ticket_update(request, ticket_id):
 def ticket_delete(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == "POST":
+        if ticket.image:
+            ticket.image.delete(save=False)
         ticket.delete()
         return redirect("ticket_list")
-    return render(request, "reviews/ticket_delete.html", {"ticket": ticket})
+    return render(request, "reviews/delete.html", {"ticket": ticket})
 
 
 # User posts
@@ -116,17 +127,20 @@ def review_update(request, ticket_id, review_id):
     else:
         form = ReviewForm(instance=review)
 
-    return render(request, "reviews/review_form.html", {"form": form})
+    return render(request, "reviews/review_form.html", {"form": form, "review": review})
 
 
 # Delete
 @login_required
-def ticket_delete(request, review_id):
-    review = Review.objects.get(id=review_id, user=request.user)
+def review_delete(request, ticket_id, review_id):
+    review = Review.objects.get(ticket_id=ticket_id, id=review_id, user=request.user)
     if request.method == "POST":
         review.delete()
-        return redirect("ticket_list")
-    return render(request, "reviews/ticket_delete.html", {"review": review})
+        return redirect("ticket_content", ticket_id)
+
+    return render(
+        request, "reviews/delete.html", {"ticket": ticket_id, "review": review}
+    )
 
 
 # User followers

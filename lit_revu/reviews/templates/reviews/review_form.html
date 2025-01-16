@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% block styles %}
 <link rel="stylesheet" href="{% static 'reviews/forms.css' %}" />
 {% endblock %} {% block content %}
-<div class="ticket-form card">
+<div class="forms card">
+  <h2>Commentaire</h2>
   <form method="post">
     {% csrf_token %} {{ form.as_p }}
     <button type="submit" class="btn secondary-button">
-      {% if review %}Mettre à jour{% else %}Publier{% endif %}
+      {% if review %}Mettre à jour{% else %}Commenter{% endif %}
     </button>
   </form>
 </div>

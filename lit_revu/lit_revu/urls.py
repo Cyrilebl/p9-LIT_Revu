@@ -68,11 +68,21 @@ urlpatterns = [
         reviews.views.ticket_update,
         name="ticket_update",
     ),
+    path(
+        "tickets/<int:ticket_id>/<int:review_id>/edit/",
+        reviews.views.review_update,
+        name="review_update",
+    ),
     # Delete
     path(
         "tickets/<int:ticket_id>/delete/",
         reviews.views.ticket_delete,
         name="ticket_delete",
+    ),
+    path(
+        "tickets/<int:ticket_id>/<int:review_id>/delete/",
+        reviews.views.review_delete,
+        name="review_delete",
     ),
     # User posts
     path("tickets/<str:username>/", reviews.views.user_posts, name="user_posts"),

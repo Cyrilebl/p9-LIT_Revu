@@ -9,8 +9,13 @@
     {% if ticket.image %}
     <img src="{{ ticket.image.url }}" alt="Image de {{ ticket.title }}" />
     {% endif %}
-    <p>{{ ticket.description|title }}</p>
+    <div class="ticket-card__content--paragraph">
+      <p>{{ ticket.description|linebreaks }}</p>
+    </div>
   </div>
+  <a class="ticket-card__review" href="{% url 'ticket_content' ticket.id %}">
+    {{ ticket.review_set.all|length }} commentaire{{ ticket.review_set.all|length|pluralize:"s" }}
+  </a>
   <div class="ticket-card__button">
     <a class="btn" href="{% url 'review_create' ticket.id %}">Commenter</a>
     {% if request.user == ticket.user %}

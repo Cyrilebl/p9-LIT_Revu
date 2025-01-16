@@ -5,21 +5,21 @@
   {% if tickets %}
   {% for ticket in tickets %}
   <div class="secondary-card">
-
     {% include "includes/ticket_content.html" %}
-
-    {% if ticket.review_set.exists %}
-      {% include "includes/review_list.html" %}
-    {% endif %}
-
   </div>
   {% endfor %}
   {% else %}
   <div class="card no-content">
+    <img src="{% static 'images/oops-icon.png' %}" alt="Smiley oops face" />
     <p>Aucune publication pour le moment</p>
-    <a class="btn secondary-button" href="{% url 'ticket_create' %}">
-      Créer une publication
-    </a>
+    <div class="no-content__button">
+      <a class="btn secondary-button" href="{% url 'ticket_create' %}">
+        Créer un post
+      </a>
+      <a class="btn primary-button" href="{% url 'user_followers' request.user.username %}">
+        Suivre un utilisateur
+      </a>
+    </div>
   </div>
   {% endif %}
 </div>

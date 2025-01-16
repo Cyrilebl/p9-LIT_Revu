@@ -19,15 +19,25 @@
   margin-left: 12px;
 }
 
+.follow form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .follow select {
-  font-family: "Roboto", serif;
+  font-family: var(--font-secondary);
   font-size: 0.9em;
   border-radius: 4px;
   border: 1px solid var(--border);
   background-color: var(--background);
   width: 176px;
   padding: 4px 8px;
-  margin-bottom: 20px;
+}
+
+.follow .btn {
+  font-size: 1em;
+  padding: 5px 20px;
 }
 
 .follow__delete {

@@ -16,6 +16,10 @@
   font-style: italic;
 }
 
+.ticket-card__header p:last-of-type {
+  color: var(--secondary-foreground);
+}
+
 .ticket-card__title {
   font-size: 1.5em;
   margin-bottom: 12px;
@@ -26,6 +30,12 @@
   gap: 20px;
 }
 
+.ticket-card__content--paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .ticket-card__content img {
   width: 200px;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
@@ -33,12 +43,21 @@
   border-radius: 4px;
 }
 
+.ticket-card__review {
+  display: block;
+  text-align: end;
+  margin: 14px 0 10px 0;
+}
+
+.ticket-card__review:hover {
+  text-decoration: underline;
+}
+
 .ticket-card__button {
   display: flex;
   justify-content: end;
   align-items: center;
   gap: 10px;
-  margin-top: 14px;
 }
 
 .ticket-card__button .btn {
@@ -54,13 +73,50 @@
   background-color: var(--placeholder);
 }
 
-.ticket-list .card {
-  padding-top: 24px;
-  padding-bottom: 34px;
+.ticket-list .no-content {
+  padding: 24px 0;
 }
 
-.ticket-list .no-content p {
-  margin-bottom: 28px;
+.no-content p {
+  margin: 6px 0 26px 0;
+}
+
+.no-content__button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.no-content__button a:first-of-type {
+  width: 160px;
+}
+
+.no-content img {
+  width: 80px;
+}
+
+.ticket-review__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ticket-review__header p:last-of-type {
+  color: var(--secondary-foreground);
+  margin-top: 4px;
+}
+
+.ticket-review__header--icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ticket-review img {
+  width: 20px;
+  cursor: pointer;
 }
 
 .ticket-review hr {
