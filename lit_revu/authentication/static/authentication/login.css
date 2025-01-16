@@ -1,11 +1,11 @@
 .login h2 {
   font-size: 1.7em;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .login > p {
   font-size: 1.1em;
-  margin: 10px 0 48px 0;
+  margin: 10px 0 24px 0;
 }
 
 .login form {
