@@ -18,8 +18,8 @@ class ReviewForm(forms.ModelForm):
     headline = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Titre"}))
     body = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Description"}))
     rating = forms.ChoiceField(
-        choices=[(i, str(i)) for i in range(6)],
-        widget=forms.Select(attrs={"placeholder": "Note"}),
+        choices=[("", "Note sur 5")] + [(i, str(i)) for i in range(6)],
+        widget=forms.Select(),
         label="Note",
     )
 
