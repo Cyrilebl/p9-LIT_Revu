@@ -13,7 +13,7 @@
     <a
       href="{% url 'ticket_create' %}"
       class="{% if request.resolver_match.url_name == 'ticket_create' %}active{% endif %}"
-      >Créer une publication</a
+      >Créer un post</a
     >
     <a
       href="{% url 'user_posts' request.user.username %}"
