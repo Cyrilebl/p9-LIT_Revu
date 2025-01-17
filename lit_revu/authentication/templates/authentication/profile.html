@@ -4,8 +4,8 @@
 
 <div class="profile secondary-card">
   <p><strong>Nom d'utilisateur : </strong>{{ request.user.username }}</p>
-  <p><strong>Nom : </strong>{{ request.user.last_name }}</p>
-  <p><strong>Prénom : </strong>{{ request.user.first_name }}</p>
+  <p><strong>Nom : </strong>{{ request.user.last_name|title }}</p>
+  <p><strong>Prénom : </strong>{{ request.user.first_name|title }}</p>
   <p><strong>Addresse e-mail : </strong>{{ request.user.email }}</p>
   <a class="link" href="{% url 'password_change' %}"
     >Modifier son mot de passe</a
