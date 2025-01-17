@@ -120,7 +120,7 @@
 }
 
 .ticket-review hr {
-  margin: 4px 0 10px 0;
+  margin: 4px 0 14px 0;
 }
 
 .ticket-review__title {
@@ -130,5 +130,5 @@
 }
 
 .ticket-review__content {
-  margin: 8px 0 4px 0;
+  margin: 6px 0;
 }
