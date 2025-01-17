@@ -28,20 +28,38 @@ class ReviewForm(forms.ModelForm):
         exclude = ("user", "ticket")
 
 
-class UserFollowsForm(forms.ModelForm):
+class UserFollowsForm(forms.Form):
+    followed_user = forms.CharField(
+        label="Rechercher un utilisateur",
+        widget=forms.TextInput(attrs={"placeholder": "Saisissez un nom d'utilisateur"}),
+        required=True,
+    )
+
     class Meta:
         model = UserFollows
-        fields = ["followed_user"]
+        fields = []
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop("user", None)
+        self.user = kwargs.pop("user", None)
         super().__init__(*args, **kwargs)
 
-        if not user.is_superuser:
-            self.fields["followed_user"].queryset = User.objects.filter(
-                is_superuser=False
-            ).exclude(id=user.id)
-        else:
-            self.fields["followed_user"].queryset = User.objects.exclude(id=user.id)
+    def clean_followed_user(self):
+        username = self.cleaned_data.get("followed_user")
 
-        self.fields["followed_user"].empty_label = "Rechercher"
+        if not username:
+            raise forms.ValidationError("Veuillez saisir un nom d'utilisateur valide.")
+
+        # Filtrer les utilisateurs en fonction des critères
+        try:
+            if self.user and not self.user.is_superuser:
+                followed_user = User.objects.filter(is_superuser=False).get(
+                    username=username
+                )
+            else:
+                followed_user = User.objects.exclude(id=self.user.id).get(
+                    username=username
+                )
+        except User.DoesNotExist:
+            raise forms.ValidationError("Cet utilisateur n'existe pas.")
+
+        return followed_user

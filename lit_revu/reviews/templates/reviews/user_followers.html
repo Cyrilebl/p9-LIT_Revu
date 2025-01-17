@@ -42,9 +42,6 @@
       {% csrf_token %} {{ form.as_p }}
       <button type="submit" class="btn secondary-button">Suivre</button>
     </form>
-    {% if messages %} {% for message in messages %}
-    <p class="message {{ message.tags }}">{{ message }}</p>
-    {% endfor %} {% endif %}
   </div>
 </div>
 {% endblock %}

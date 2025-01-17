@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Ticket, Review, UserFollows
 from .forms import TicketForm, ReviewForm, UserFollowsForm
 from django.contrib.auth.decorators import login_required
@@ -77,12 +77,13 @@ def ticket_delete(request, ticket_id):
 # User posts
 @login_required
 def user_posts(request, username):
-    user = get_object_or_404(User, username=username)
+    user = User.objects.get(username=username)
     tickets = Ticket.objects.filter(user=user).order_by("-time_created")
 
     context = {
         "user_profile": user,
         "tickets": tickets,
+        "is_own_posts": user == request.user,
     }
     return render(request, "reviews/ticket_list.html", context)
 
@@ -149,7 +150,7 @@ def review_delete(request, ticket_id, review_id):
 # Read / Create
 @login_required
 def user_followers(request, username):
-    target_user = get_object_or_404(User, username=username)
+    target_user = User.objects.get(username=username)
 
     # Récupérer les abonnés et les utilisateurs suivis
     followers = UserFollows.objects.filter(followed_user=target_user)
@@ -160,14 +161,17 @@ def user_followers(request, username):
         form = UserFollowsForm(request.POST, user=request.user)
         if form.is_valid():
             followed_user = form.cleaned_data["followed_user"]
+
             if UserFollows.objects.filter(
                 user=request.user, followed_user=followed_user
             ).exists():
                 messages.error(request, "Vous suivez déjà cet utilisateur.")
+            elif followed_user == request.user:
+                messages.error(request, "Vous ne pouvez pas vous suivre vous-même.")
             else:
-                follow = form.save(commit=False)
-                follow.user = request.user
-                follow.save()
+                UserFollows.objects.create(
+                    user=request.user, followed_user=followed_user
+                )
             return redirect("user_followers", username=username)
     else:
         form = UserFollowsForm(user=request.user)
@@ -184,7 +188,7 @@ def user_followers(request, username):
 # Delete
 @login_required
 def user_followers_delete(request, username, follow_id):
-    user = get_object_or_404(UserFollows, id=follow_id, user=request.user)
+    user = UserFollows.objects.get(id=follow_id, user=request.user)
     if request.method == "POST":
         user.delete()
         return redirect("user_followers", username=username)

@@ -21,23 +21,21 @@
 
 .follow form {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
 }
 
-.follow select {
-  font-family: var(--font-secondary);
-  font-size: 0.9em;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background-color: var(--background);
-  width: 176px;
-  padding: 4px 8px;
+.follow input {
+  width: 240px;
+  height: 32px;
 }
 
-.follow .btn {
+.follow .secondary-button {
   font-size: 1em;
-  padding: 5px 20px;
+  padding: 0 20px;
+  width: 240px;
+  height: 32px;
 }
 
 .follow__delete {
@@ -49,9 +47,4 @@
 .follow__delete .btn {
   padding: 6px 14px;
   font-size: 0.8em;
-}
-
-.follow .message {
-  color: var(--error);
-  margin-top: 16px;
 }
