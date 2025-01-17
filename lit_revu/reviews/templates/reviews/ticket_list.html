@@ -16,9 +16,11 @@
       <a class="btn secondary-button" href="{% url 'ticket_create' %}">
         Créer un post
       </a>
+      {% if not is_own_posts %}
       <a class="btn primary-button" href="{% url 'user_followers' request.user.username %}">
         Suivre un utilisateur
       </a>
+      {% endif %}
     </div>
   </div>
   {% endif %}
