@@ -9,10 +9,10 @@
   <h2>Suppression</h2>
   <p>
     Êtes-vous sûr de vouloir supprimer
-    {% if review %}
+    {% if comment %}
     ce commentaire
     {% else %}
-    la publication <br /> "{{ticket.title|title}}"
+    la publication <br /> "<strong>{{ticket.title|title}}</strong>"
     {% endif %} ?
   </p>
   <div class="buttons">
@@ -37,7 +37,7 @@
     {% else %}
     <a
       class="btn third-button"
-      href="{% url 'ticket_content' ticket.id %}"
+      href="{% url 'ticket' ticket.id %}"
       aria-label="Annuler la suppression et revenir à la publication intitulée '{{ ticket.title|title }}'"
     >
       Annuler

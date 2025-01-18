@@ -93,55 +93,115 @@ def user_posts(request, username):
 
 # Create
 @login_required
-def review_create(request, ticket_id):
+def comment_create(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user
-            review.ticket = ticket
-            review.save()
-            return redirect("ticket_content", ticket.id)
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.ticket = ticket
+            comment.save()
+            return redirect("ticket", ticket.id)
     else:
         form = ReviewForm()
 
-    return render(request, "reviews/review_form.html", {"form": form, "ticket": ticket})
+    return render(
+        request, "reviews/comment_form.html", {"form": form, "ticket": ticket}
+    )
+
+
+# Read
+@login_required
+def comment_list(request):
+    comment = Review.objects.all()
+    return render(request, "reviews/ticket_list.html", {"comment": comment})
+
+
+# Update
+@login_required
+def comment_update(request, ticket_id, comment_id):
+    comment = Review.objects.get(id=comment_id, user=request.user)
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect("ticket", ticket_id)
+    else:
+        form = ReviewForm(instance=comment)
+
+    return render(
+        request, "reviews/comment_form.html", {"form": form, "comment": comment}
+    )
+
+
+# Delete
+@login_required
+def comment_delete(request, ticket_id, comment_id):
+    comment = Review.objects.get(ticket_id=ticket_id, id=comment_id, user=request.user)
+    if request.method == "POST":
+        comment.delete()
+        return redirect("ticket", ticket_id)
+
+    return render(
+        request, "reviews/delete.html", {"ticket": ticket_id, "comment": comment}
+    )
+
+
+# Reviews
+
+
+# Create
+@login_required
+def review_create(request):
+    if request.method == "POST":
+        form = TicketForm(request.POST, request.FILES)
+        if form.is_valid():
+            ticket = form.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
+            return redirect("ticket", ticket.id)
+    else:
+        form = TicketForm()
+
+    return render(request, "reviews/ticket_form.html", {"form": form})
 
 
 # Read
 @login_required
 def review_list(request):
-    reviews = Review.objects.all()
-    return render(request, "reviews/ticket_list.html", {"reviews": reviews})
+    review = Ticket.objects.all()
+    return render(request, "reviews/ticket_list.html", {"review": review})
 
 
 # Update
 @login_required
-def review_update(request, ticket_id, review_id):
-    review = Review.objects.get(id=review_id, user=request.user)
+def review_update(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
     if request.method == "POST":
-        form = ReviewForm(request.POST, instance=review)
+        if request.FILES.get("image") and ticket.image:
+            ticket.image.delete(save=False)
+
+        form = TicketForm(request.POST, request.FILES, instance=ticket)
         if form.is_valid():
             form.save()
-            return redirect("ticket_content", ticket_id)
+            return redirect("ticket_content", ticket.id)
     else:
-        form = ReviewForm(instance=review)
+        form = TicketForm(instance=ticket)
 
-    return render(request, "reviews/review_form.html", {"form": form, "review": review})
+    return render(request, "reviews/ticket_form.html", {"form": form, "ticket": ticket})
 
 
 # Delete
 @login_required
-def review_delete(request, ticket_id, review_id):
-    review = Review.objects.get(ticket_id=ticket_id, id=review_id, user=request.user)
+def review_delete(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
     if request.method == "POST":
-        review.delete()
-        return redirect("ticket_content", ticket_id)
-
-    return render(
-        request, "reviews/delete.html", {"ticket": ticket_id, "review": review}
-    )
+        if ticket.image:
+            ticket.image.delete(save=False)
+        ticket.delete()
+        return redirect("ticket_list")
+    return render(request, "reviews/delete.html", {"ticket": ticket})
 
 
 # User followers

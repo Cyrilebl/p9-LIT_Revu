@@ -53,15 +53,18 @@ urlpatterns = [
     # Create
     path("tickets/new/", reviews.views.ticket_create, name="ticket_create"),
     path(
-        "tickets/review/new/<int:ticket_id>/",
+        "tickets/<int:ticket_id>/review/new/",
         reviews.views.review_create,
         name="review_create",
     ),
+    path(
+        "tickets/<int:ticket_id>/comment/new/",
+        reviews.views.comment_create,
+        name="comment_create",
+    ),
     # Read
     path("tickets/", reviews.views.ticket_list, name="ticket_list"),
-    path(
-        "tickets/<int:ticket_id>/", reviews.views.ticket_content, name="ticket_content"
-    ),
+    path("tickets/<int:ticket_id>/", reviews.views.ticket_content, name="ticket"),
     # Update
     path(
         "tickets/<int:ticket_id>/edit/",
@@ -69,9 +72,9 @@ urlpatterns = [
         name="ticket_update",
     ),
     path(
-        "tickets/<int:ticket_id>/<int:review_id>/edit/",
-        reviews.views.review_update,
-        name="review_update",
+        "tickets/<int:ticket_id>/edit/<int:comment_id>/",
+        reviews.views.comment_update,
+        name="comment_update",
     ),
     # Delete
     path(
@@ -80,9 +83,9 @@ urlpatterns = [
         name="ticket_delete",
     ),
     path(
-        "tickets/<int:ticket_id>/<int:review_id>/delete/",
-        reviews.views.review_delete,
-        name="review_delete",
+        "tickets/<int:ticket_id>/delete/<int:comment_id>/",
+        reviews.views.comment_delete,
+        name="comment_delete",
     ),
     # User posts
     path("tickets/<str:username>/", reviews.views.user_posts, name="user_posts"),

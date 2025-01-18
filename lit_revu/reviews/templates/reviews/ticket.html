@@ -7,7 +7,8 @@
 {% block content %}
 <div class="secondary-card">
     {% include "includes/ticket_content.html" %}
-
+    
+  <h3>Commentaires</h3>
     {% if ticket.review_set.exists %}
       {% include "includes/review_list.html" %}
     {% endif %}

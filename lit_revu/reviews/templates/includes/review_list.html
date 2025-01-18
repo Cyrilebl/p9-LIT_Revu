@@ -1,6 +1,5 @@
 {% load static %}
 <div id="ticket-review">
-  <h3>Commentaires</h3>
   {% for review in ticket.review_set.all %}
   <div>
     <div class="ticket-review__header">
@@ -14,10 +13,10 @@
       </div>
       {% if request.user == review.user %}
       <div class="ticket-review__header--icons">
-        <a href="{% url 'review_update' ticket.id review.id %}" aria-label="Modifier ce commentaire">
+        <a href="{% url 'comment_update' ticket.id review.id %}" aria-label="Modifier ce commentaire">
           <img src="{% static 'images/edit-icon.png' %}" alt=""/>
         </a>
-        <a href="{% url 'review_delete' ticket.id review.id %}" aria-label="Supprimer ce commentaire">
+        <a href="{% url 'comment_delete' ticket.id review.id %}" aria-label="Supprimer ce commentaire">
           <img src="{% static 'images/cross-icon.png' %}" alt="" />
         </a>
       </div>
