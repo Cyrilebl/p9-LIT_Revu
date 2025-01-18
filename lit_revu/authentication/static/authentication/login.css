@@ -6,6 +6,7 @@
 #login > p {
   font-size: 1.1em;
   margin: 10px 0 24px 0;
+  line-height: 1.1em;
 }
 
 #login form {
