@@ -1,16 +1,33 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'authentication/login.css' %}" />
-{% endblock %} {% block content %}
+{% endblock %}
 
-<div class="login card">
+{% block content %}
+<div id="login" class="card">
   <h2>Rejoignez la discussion !</h2>
   <p>Écrivez et partagez vos critiques littéraires</p>
-  <form method="post">
+  <form
+    method="post"
+    aria-labelledby="login-form"
+  >
     {% csrf_token %} {{ form.as_p }}
-    <button class="btn primary-button" type="submit">Se connecter</button>
+    <button
+      class="btn primary-button"
+      type="submit"
+      aria-label="Se connecter à votre compte"
+    >
+      Se connecter
+    </button>
   </form>
   <hr />
-  <a class="btn secondary-button" href="{% url 'signup' %}">Créer un compte</a>
+  <a
+    class="btn secondary-button"
+    href="{% url 'signup' %}"
+    aria-label="Créer un compte utilisateur"
+  >
+    Créer un compte
+  </a>
 </div>
-
 {% endblock %}

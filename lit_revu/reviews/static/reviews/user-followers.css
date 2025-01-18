@@ -1,37 +1,37 @@
-.follow {
+#follow {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.follow h2 {
+#follow h2 {
   font-size: 1.2em;
   margin-bottom: 10px;
 }
 
-.follow ul {
+#follow ul {
   margin-left: 24px;
 }
 
-.follow .no-content {
+#follow .no-content {
   color: var(--secondary-foreground);
   font-style: italic;
   margin-left: 12px;
 }
 
-.follow form {
+#follow form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 14px;
 }
 
-.follow input {
+#follow input {
   width: 240px;
   height: 32px;
 }
 
-.follow .secondary-button {
+#follow .secondary-button {
   font-size: 1em;
   padding: 0 20px;
   width: 240px;

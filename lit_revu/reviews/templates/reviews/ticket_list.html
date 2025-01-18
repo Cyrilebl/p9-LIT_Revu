@@ -1,7 +1,11 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'reviews/ticket-list.css' %}" />
-{% endblock %} {% block content %}
-<div class="ticket-list">
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'reviews/ticket.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div id="ticket-list">
   {% if tickets %}
   {% for ticket in tickets %}
   <div class="secondary-card">
@@ -10,14 +14,25 @@
   {% endfor %}
   {% else %}
   <div class="card no-content">
-    <img src="{% static 'images/oops-icon.png' %}" alt="Smiley oops face" />
+    <img
+      src="{% static 'images/oops-icon.png' %}"
+      alt="Visage désolé indiquant qu'il n'y a pas de contenu disponible"
+    />
     <p>Aucune publication pour le moment</p>
     <div class="no-content__button">
-      <a class="btn secondary-button" href="{% url 'ticket_create' %}">
+      <a
+        class="btn secondary-button"
+        href="{% url 'ticket_create' %}"
+        aria-label="Créer un nouveau post"
+      >
         Créer un post
       </a>
       {% if not is_own_posts %}
-      <a class="btn primary-button" href="{% url 'user_followers' request.user.username %}">
+      <a
+        class="btn primary-button"
+        href="{% url 'user_followers' request.user.username %}"
+        aria-label="Accéder à la page pour suivre des utilisateurs"
+      >
         Suivre un utilisateur
       </a>
       {% endif %}

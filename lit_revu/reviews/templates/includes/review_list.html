@@ -1,20 +1,24 @@
 {% load static %}
-<div class="ticket-review">
+<div id="ticket-review">
   <h3>Commentaires</h3>
   {% for review in ticket.review_set.all %}
   <div>
     <div class="ticket-review__header">
       <div>
         <p><strong>{{ review.user.username }}</strong></p>
-        <p>{{ review.time_created|date:"d/m/Y H:i" }}</p>
+        <p>
+          <time datetime="{{ review.time_created|date:'Y-m-d H:i' }}">
+            {{ review.time_created|date:"d/m/Y H:i" }}
+          </time>
+        </p>
       </div>
       {% if request.user == review.user %}
       <div class="ticket-review__header--icons">
         <a href="{% url 'review_update' ticket.id review.id %}" aria-label="Modifier ce commentaire">
-          <img src="{% static 'images/edit-icon.png' %}" alt="Edit icon"/>
+          <img src="{% static 'images/edit-icon.png' %}" alt=""/>
         </a>
         <a href="{% url 'review_delete' ticket.id review.id %}" aria-label="Supprimer ce commentaire">
-          <img src="{% static 'images/cross-icon.png' %}" alt="Cross icon" />
+          <img src="{% static 'images/cross-icon.png' %}" alt="" />
         </a>
       </div>
       {% endif %}

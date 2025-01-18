@@ -1,30 +1,55 @@
-<div class="ticket-card">
+<div id="ticket-card">
   <div class="ticket-card__header">
     <p>Posté par <strong>{{ ticket.user.username }}</strong></p>
-    <p>{{ ticket.time_created }}</p>
+    <p>
+      <time datetime="{{ ticket.time_created }}">
+        {{ ticket.time_created }}
+      </time>
+    </p>
   </div>
   <hr />
   <h2 class="ticket-card__title">{{ ticket.title|title }}</h2>
   <div class="ticket-card__content">
     {% if ticket.image %}
-    <img src="{{ ticket.image.url }}" alt="Image de {{ ticket.title }}" />
+    <img
+      src="{{ ticket.image.url }}"
+      alt="Illustration du ticket intitulé {{ ticket.title }}"
+    />
     {% endif %}
     <div class="ticket-card__content--paragraph">
       <p>{{ ticket.description|linebreaks }}</p>
     </div>
   </div>
-  <a class="ticket-card__review" href="{% url 'ticket_content' ticket.id %}">
+  <a
+    class="ticket-card__review"
+    href="{% url 'ticket_content' ticket.id %}"
+    aria-label="Voir les commentaires pour {{ ticket.title }}"
+  >
     {{ ticket.review_set.all|length }} commentaire{{ ticket.review_set.all|length|pluralize:"s" }}
   </a>
   <div class="ticket-card__button">
-    <a class="btn" href="{% url 'review_create' ticket.id %}">Commenter</a>
+    <a
+      class="btn"
+      href="{% url 'review_create' ticket.id %}"
+      aria-label="Ajouter un commentaire pour {{ ticket.title }}"
+    >
+      Commenter
+    </a>
     {% if request.user == ticket.user %}
-    <a class="btn secondary-button" href="{% url 'ticket_update' ticket.id %}"
-      >Modifier</a
+    <a
+      class="btn secondary-button"
+      href="{% url 'ticket_update' ticket.id %}"
+      aria-label="Mofidier le ticket intitulé {{ ticket.title }}"
     >
-    <a class="btn third-button" href="{% url 'ticket_delete' ticket.id %}"
-      >Supprimer</a
+      Modifier
+    </a>
+    <a
+      class="btn third-button"
+      href="{% url 'ticket_delete' ticket.id %}"
+      aria-label="Supprimer le ticket intitulé {{ ticket.title }}"
     >
+      Supprimer
+    </a>
     {% endif %}
   </div>
 </div>

@@ -1,8 +1,12 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'reviews/user-followers.css' %}" />
-{% endblock %} {% block content %}
-<div class="follow secondary-card">
-  <div>
+{% endblock %}
+
+{% block content %}
+<div id="follow" class="secondary-card">
+  <section aria-labelledby="followers-section">
     <h2>Followers :</h2>
     {% if followers %}
     <ul>
@@ -13,8 +17,9 @@
     {% else %}
     <p class="no-content">Personne ne vous suit pour le moment</p>
     {% endif %}
-  </div>
-  <div>
+  </section>
+
+  <section aria-labelledby="following-section">
     <h2>Suivi(e)s :</h2>
     {% if following %}
     <ul>
@@ -24,10 +29,15 @@
         <form
           action="{% url 'user_followers_delete' username=target_user.username follow_id=follow.id %}"
           method="post"
-          style="display: inline"
         >
           {% csrf_token %}
-          <button type="submit" class="btn third-button">Ne plus suivre</button>
+          <button
+            type="submit"
+            class="btn third-button"
+            aria-label="Ne plus suivre {{ follow.followed_user.username }}"
+          >
+            Ne plus suivre
+          </button>
         </form>
       </div>
       {% endfor %}
@@ -35,13 +45,20 @@
     {% else %}
     <p class="no-content">Aucun abonnement pour le moment</p>
     {% endif %}
-  </div>
-  <div>
+  </section>
+
+  <section aria-labelledby="follow-users-section">
     <h2>Utilisateurs :</h2>
     <form method="post">
       {% csrf_token %} {{ form.as_p }}
-      <button type="submit" class="btn secondary-button">Suivre</button>
+      <button
+        type="submit"
+        class="btn secondary-button"
+        aria-label="Ajouter un abonnement"
+      >
+        Suivre
+      </button>
     </form>
-  </div>
+  </section>
 </div>
 {% endblock %}

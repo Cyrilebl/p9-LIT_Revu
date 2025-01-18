@@ -1,11 +1,17 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'authentication/done.css' %}" />
-{% endblock %} {% block content %}
+{% endblock %}
 
+{% block content %}
 <div class="done card">
-  <img src="{% static 'assets/checked-icon.png' %}" alt="LIT Revu Banner" />
+  <img
+    src="{% static 'assets/checked-icon.png' %}"
+    alt="Icône de confirmation avec une coche"
+  />
   <h2>Merci pour votre inscription !</h2>
-  <p>Félicitations, votre compte a été crée avec succès.</p>
+  <p>Félicitations, votre compte a été créé avec succès.</p>
   <a class="btn secondary-button" href="{% url 'login' %}">S'identifier</a>
 </div>
 {% endblock %}

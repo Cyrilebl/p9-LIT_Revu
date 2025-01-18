@@ -1,19 +1,41 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'authentication/profile.css' %}" />
-{% endblock %} {% block content %}
+{% endblock %}
 
-<div class="profile secondary-card">
-  <p><strong>Nom d'utilisateur : </strong>{{ request.user.username }}</p>
-  <p><strong>Nom : </strong>{{ request.user.last_name|title }}</p>
-  <p><strong>Prénom : </strong>{{ request.user.first_name|title }}</p>
-  <p><strong>Addresse e-mail : </strong>{{ request.user.email }}</p>
+{% block content %}
+<div id="profile" class="secondary-card">
+  <dl class="profile__info">
+    <div>
+      <dt><strong>Nom d'utilisateur : </strong></dt>
+      <dd>{{ request.user.username }}</dd>
+    </div>
+    <div>
+      <dt><strong>Nom : </strong></dt>
+      <dd>{{ request.user.last_name|title }}</dd>
+    </div>
+    <div>
+      <dt><strong>Prénom : </strong></dt>
+      <dd>{{ request.user.first_name|title }}</dd>
+    </div>
+    <div>
+      <dt><strong>Adresse e-mail : </strong></dt>
+      <dd>{{ request.user.email }}</dd>
+    </div>
+  </dl>
   <a class="link" href="{% url 'password_change' %}"
     >Modifier son mot de passe</a
   >
   <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
-    <button class="btn primary-button" type="submit">Déconnexion</button>
+    <button
+      class="btn primary-button"
+      type="submit"
+      aria-label="Se déconnecter du compte"
+    >
+      Déconnexion
+    </button>
   </form>
 </div>
-
 {% endblock %}

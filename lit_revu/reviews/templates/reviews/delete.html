@@ -1,17 +1,21 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'reviews/delete.css' %}" />
-{% endblock %} {% block content %}
-<div class="delete card">
+{% endblock %}
+
+{% block content %}
+<div id="delete" class="card">
   <h2>Suppression</h2>
   <p>
     Êtes-vous sûr de vouloir supprimer
     {% if review %}
     ce commentaire
     {% else %}
-    la publication <br /> {{ticket.title|title}}
+    la publication <br /> "{{ticket.title|title}}"
     {% endif %} ?
   </p>
-  <div class="delete-btn">
+  <div class="buttons">
     <form action="" method="post">
       {% csrf_token %}
       <button
@@ -23,9 +27,21 @@
       </button>
     </form>
     {% if ticket %}
-    <a class="btn third-button" href="{% url 'ticket_list' %}">Annuler</a>
+    <a
+      class="btn third-button"
+      href="{% url 'ticket_list' %}"
+      aria-label="Annuler la suppression et revenir à l'accueil"
+    >
+      Annuler
+    </a>
     {% else %}
-    <a class="btn third-button" href="{% url 'ticket_content' ticket.id %}">Annuler</a>
+    <a
+      class="btn third-button"
+      href="{% url 'ticket_content' ticket.id %}"
+      aria-label="Annuler la suppression et revenir à la publication intitulée '{{ ticket.title|title }}'"
+    >
+      Annuler
+    </a>
     {% endif %}
   </div>
 </div>

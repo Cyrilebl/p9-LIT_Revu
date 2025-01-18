@@ -1,11 +1,19 @@
-{% extends 'base.html' %} {% load static %} {% block styles %}
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'reviews/forms.css' %}" />
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 <div class="forms card">
   <h2>Commentaire</h2>
   <form method="post">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn secondary-button">
+    <button
+      type="submit"
+      class="btn secondary-button"
+      aria-label="{% if review %}Mettre à jour votre commentaire{% else %}Ajouter un commentaire{% endif %}"
+    >
       {% if review %}Mettre à jour{% else %}Commenter{% endif %}
     </button>
   </form>

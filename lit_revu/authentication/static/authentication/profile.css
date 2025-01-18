@@ -1,13 +1,19 @@
-.profile {
+#profile .profile__info {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.profile .primary-button {
+#profile .profile__info div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#profile .primary-button {
   font-size: 1em;
 }
 
-.profile .link {
-  margin: 6px 0 10px 0;
+#profile .link {
+  margin: 20px 0;
 }

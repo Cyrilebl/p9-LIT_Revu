@@ -1,18 +1,18 @@
-.delete {
+#delete {
   width: 450px;
 }
 
-.delete h2 {
+#delete h2 {
   color: var(--primary);
   margin-top: 20px;
 }
 
-.delete p {
+#delete p {
   margin: 20px 0 32px 0;
   line-height: 20px;
 }
 
-.delete-btn {
+#delete .buttons {
   display: flex;
   align-items: center;
   justify-content: center;

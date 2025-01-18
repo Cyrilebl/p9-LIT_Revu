@@ -1,11 +1,11 @@
-.ticket-list,
-.ticket-review {
+#ticket-list,
+#ticket-review {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-.ticket-card hr {
+#ticket-card hr {
   margin: 10px 0 20px 0;
 }
 
@@ -73,7 +73,7 @@
   background-color: var(--placeholder);
 }
 
-.ticket-list .no-content {
+#ticket-list .no-content {
   padding: 24px 0;
 }
 
@@ -114,12 +114,12 @@
   gap: 10px;
 }
 
-.ticket-review img {
+#ticket-review img {
   width: 20px;
   cursor: pointer;
 }
 
-.ticket-review hr {
+#ticket-review hr {
   margin: 4px 0 14px 0;
 }
 
