@@ -36,7 +36,6 @@ body {
   font-family: var(--font-primary);
   color: var(--foreground);
   background-color: var(--background);
-  margin-top: 100px;
 }
 
 main {
@@ -77,6 +76,12 @@ hr {
   height: 0.01em;
   background-color: var(--border);
   border: none;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -134,17 +139,15 @@ hr {
 }
 
 .card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   text-align: center;
-  transform: translate(-50%, -50%);
+  margin: auto;
   padding: 16px;
   width: 400px;
   border-radius: 8px;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
   background-color: var(--card);
+  margin-bottom: 32px;
 }
 
 .secondary-card {
