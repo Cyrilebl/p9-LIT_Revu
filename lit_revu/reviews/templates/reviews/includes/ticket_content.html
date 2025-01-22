@@ -20,24 +20,15 @@
       <p>{{ ticket.description|linebreaks }}</p>
     </div>
   </div>
-  <a
+  <p
     class="ticket-card__review"
-    href="{% url 'ticket' ticket.id %}"
-    aria-label="Voir les commentaires pour {{ ticket.title }}"
   >
-    {{ ticket.review_set.all|length }} réponse{{ ticket.review_set.all|length|pluralize:"s" }}
-  </a>
+    {{ ticket.review_set.all|length }} commentaire{{ ticket.review_set.all|length|pluralize:"s" }}
+  </p>
   <div class="ticket-card__button">
     <a
       class="btn"
-      href="{% url 'ticket_create' %}"
-      aria-label="Ajouter une critique pour {{ ticket.title }}"
-    >
-      Faire une critique
-    </a>
-    <a
-      class="btn"
-      href="{% url 'comment_create' ticket.id %}"
+      href="{% url 'review_create' ticket.id %}"
       aria-label="Ajouter un commentaire pour {{ ticket.title }}"
     >
       Commenter

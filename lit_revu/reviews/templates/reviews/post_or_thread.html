@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body_class %}centered{% endblock %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'reviews/post-or-thread.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div id="user-post" class="card">
+    <img
+      src="{% static 'images/thinking-face.png' %}"
+      alt="Visage pensant indiquant qu'il faut faire un choix"
+    />
+    <h2>Que souhaitez-vous créer ?</h2>
+    <div>
+        <a
+        class="btn secondary-button"
+        href="{% url 'ticket_create' %}"
+        aria-label="Créer un nouveau post"
+        >
+        Créer un post
+        </a>
+        <a
+        class="btn primary-button"
+        href="{% url 'thread_create' %}"
+        aria-label="Créer un nouveau thread"
+        >
+        Créer un thread
+        </a>
+    </div>
+</div>
+{% endblock %}

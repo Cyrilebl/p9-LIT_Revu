@@ -6,17 +6,18 @@
 {% endblock %}
 
 {% block content %}
-<div class="forms card">
-  <h2>Post</h2>
+<div id="thread" class="forms card">
+  <h2>Thread</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ ticket_form.as_p }}
+    {{ review_form.as_p }}
     <button
       class="btn secondary-button"
       type="submit"
-      aria-label="{% if ticket %}Mettre à jour votre publication{% else %}Publier{% endif %}"
+      aria-label="Publier"
     >
-      {% if ticket %}Mettre à jour{% else %}Publier{% endif %}
+    Publier
     </button>
   </form>
 </div>

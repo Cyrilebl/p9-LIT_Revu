@@ -6,30 +6,30 @@
 {% block content %}
 <header role="banner">
   <h1>
-    <a href="{% url 'ticket_list' %}" aria-label="Retour à l'accueil LitRevu">LITRevu</a>
+    <a href="{% url 'home' %}" aria-label="Retour à l'accueil LitRevu">LITRevu</a>
   </h1>
   {% if user.is_authenticated %}
   <nav aria-label="Navigation principale">
     <a
-      href="{% url 'ticket_list' %}"
-      class="{% if request.resolver_match.url_name == 'ticket_list' %}active{% endif %}"
+      href="{% url 'home' %}"
+      class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
       >
       Accueil
     </a>
     <a
-      href="{% url 'ticket_create' %}"
-      class="{% if request.resolver_match.url_name == 'ticket_create' %}active{% endif %}"
+      href="{% url 'post_or_thread' %}"
+      class="{% if request.resolver_match.url_name == 'post_or_thread' %}active{% endif %}"
       >
-      Créer un post
+      Créer une publication
     </a>
     <a
-      href="{% url 'user_posts' request.user.username %}"
-      class="{% if request.resolver_match.url_name == 'user_posts' %}active{% endif %}"
+      href="{% url 'user_tickets' %}"
+      class="{% if request.resolver_match.url_name == 'user_tickets' %}active{% endif %}"
       >
       Mes posts
     </a>
     <a
-      href="{% url 'user_followers' request.user.username %}"
+      href="{% url 'user_followers' %}"
       class="{% if request.resolver_match.url_name == 'user_followers' %}active{% endif %}"
       >
       Abonnés

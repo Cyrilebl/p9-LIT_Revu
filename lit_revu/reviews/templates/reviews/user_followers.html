@@ -27,7 +27,7 @@
       <div class="follow__delete">
         <li>{{ follow.followed_user.username }}</li>
         <form
-          action="{% url 'user_followers_delete' username=target_user.username follow_id=follow.id %}"
+          action="{% url 'user_followers_delete' follow_id=follow.id %}"
           method="post"
         >
           {% csrf_token %}

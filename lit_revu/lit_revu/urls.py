@@ -27,7 +27,7 @@ urlpatterns = [
     ),
     path("signup/", authentication.views.signup_page, name="signup"),
     path(
-        "signup/done",
+        "signup/done/",
         authentication.views.signup_done,
         name="signup_done",
     ),
@@ -49,53 +49,49 @@ urlpatterns = [
         ),
         name="password_change_done",
     ),
-    # Reviews app
-    # Create
-    path("tickets/new/", reviews.views.ticket_create, name="ticket_create"),
-    path(
-        "tickets/<int:ticket_id>/review/new/",
-        reviews.views.review_create,
-        name="review_create",
-    ),
-    path(
-        "tickets/<int:ticket_id>/comment/new/",
-        reviews.views.comment_create,
-        name="comment_create",
-    ),
-    # Read
-    path("tickets/", reviews.views.ticket_list, name="ticket_list"),
+    # Tickets
+    path("ticket/new/", reviews.views.ticket_create, name="ticket_create"),
     path("tickets/<int:ticket_id>/", reviews.views.ticket_content, name="ticket"),
-    # Update
     path(
         "tickets/<int:ticket_id>/edit/",
         reviews.views.ticket_update,
         name="ticket_update",
     ),
     path(
-        "tickets/<int:ticket_id>/edit/<int:comment_id>/",
-        reviews.views.comment_update,
-        name="comment_update",
-    ),
-    # Delete
-    path(
         "tickets/<int:ticket_id>/delete/",
         reviews.views.ticket_delete,
         name="ticket_delete",
     ),
+    # Reviews
     path(
-        "tickets/<int:ticket_id>/delete/<int:comment_id>/",
-        reviews.views.comment_delete,
-        name="comment_delete",
+        "tickets/<int:ticket_id>/review/new/",
+        reviews.views.review_create,
+        name="review_create",
     ),
-    # User posts
-    path("tickets/<str:username>/", reviews.views.user_posts, name="user_posts"),
-    # User followers / Read, Create, Delete
-    path("follow/<str:username>/", reviews.views.user_followers, name="user_followers"),
     path(
-        "follow/<str:username>/delete/<int:follow_id>",
+        "reviews/<int:review_id>/edit/",
+        reviews.views.review_update,
+        name="review_update",
+    ),
+    path(
+        "reviews/<int:review_id>/delete/",
+        reviews.views.review_delete,
+        name="review_delete",
+    ),
+    # Followers
+    path("followers/", reviews.views.user_followers, name="user_followers"),
+    path(
+        "followers/<int:follow_id>/delete/",
         reviews.views.user_followers_delete,
         name="user_followers_delete",
     ),
+    # User tickets
+    path("home/", reviews.views.ticket_list, name="home"),
+    path("my-tickets/", reviews.views.user_tickets, name="user_tickets"),
+    # Tickets and Reviews
+    path("thread/new/", reviews.views.ticket_and_review_create, name="thread_create"),
+    # Ticket or Tickets and Reviews
+    path("post/type/", reviews.views.post_or_thread, name="post_or_thread"),
 ]
 
 if settings.DEBUG:

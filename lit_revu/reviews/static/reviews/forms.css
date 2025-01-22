@@ -63,3 +63,9 @@ input[type="file"] {
   margin: 14px 0 4px 0;
   width: 224px;
 }
+
+#thread textarea {
+  resize: none;
+  height: 144px;
+  padding: 10px 16px;
+}

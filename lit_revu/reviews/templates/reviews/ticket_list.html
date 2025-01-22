@@ -9,7 +9,11 @@
   {% if tickets %}
   {% for ticket in tickets %}
   <div class="secondary-card">
-    {% include "includes/ticket_content.html" %}
+    {% include "reviews/includes/ticket_content.html" %}
+
+    {% if ticket.review_set.exists %}
+      {% include "reviews/includes/review_list.html" %}
+    {% endif %}
   </div>
   {% endfor %}
   {% else %}
@@ -27,7 +31,7 @@
       >
         Créer un post
       </a>
-      {% if not is_own_posts %}
+      {% if current_page == "home" %}
       <a
         class="btn primary-button"
         href="{% url 'user_followers' request.user.username %}"

@@ -49,10 +49,6 @@
   margin: 14px 0 10px 0;
 }
 
-.ticket-card__review:hover {
-  text-decoration: underline;
-}
-
 .ticket-card__button {
   display: flex;
   justify-content: end;
@@ -65,13 +61,11 @@
   font-size: 0.8em;
 }
 
-.ticket-card__button .btn:first-of-type,
-.ticket-card__button .btn:nth-of-type(2) {
+.ticket-card__button .btn:first-of-type {
   background-color: var(--secondary-foreground);
 }
 
-.ticket-card__button .btn:first-of-type:hover,
-.ticket-card__button .btn:nth-of-type(2):hover {
+.ticket-card__button .btn:first-of-type:hover {
   background-color: var(--placeholder);
 }
 
@@ -97,6 +91,10 @@
 
 .no-content img {
   width: 80px;
+}
+
+#ticket-review h3 {
+  margin-top: 10px;
 }
 
 .ticket-review__header {

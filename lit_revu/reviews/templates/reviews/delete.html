@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block body_class %}centered{% endblock %}
 {% load static %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'reviews/delete.css' %}" />
@@ -9,7 +10,7 @@
   <h2>Suppression</h2>
   <p>
     Êtes-vous sûr de vouloir supprimer
-    {% if comment %}
+    {% if review %}
     ce commentaire
     {% else %}
     la publication <br /> "<strong>{{ticket.title|title}}</strong>"
@@ -26,23 +27,13 @@
         Supprimer
       </button>
     </form>
-    {% if ticket %}
     <a
       class="btn third-button"
-      href="{% url 'ticket_list' %}"
+      href="{% url 'home' %}"
       aria-label="Annuler la suppression et revenir à l'accueil"
     >
       Annuler
     </a>
-    {% else %}
-    <a
-      class="btn third-button"
-      href="{% url 'ticket' ticket.id %}"
-      aria-label="Annuler la suppression et revenir à la publication intitulée '{{ ticket.title|title }}'"
-    >
-      Annuler
-    </a>
-    {% endif %}
   </div>
 </div>
 {% endblock %}
