@@ -18,7 +18,7 @@ $ git clone https://github.com/Cyrilebl/p9-LIT_Revu.git
 
 2. Création et activation de l'environnement virtuel :
 
-- ### Windows :
+- #### Windows :
 
 ```bash
 $ cd p9-LIT_Revu
@@ -26,7 +26,7 @@ $ python -m venv env
 $ ~env\Scripts\activate
 ```
 
-- ### MacOS/Linux :
+- #### MacOS/Linux :
 
 ```bash
 $ cd p9-LIT_Revu
