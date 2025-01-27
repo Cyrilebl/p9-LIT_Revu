@@ -43,14 +43,15 @@ class SignUpForm(UserCreationForm):
 
 
 class NewPasswordForm(PasswordChangeForm):
-    old_password = forms.CharField(
-        widget=forms.TextInput(attrs={"placeholder": "Ancien mot de passe"})
-    )
-    new_password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Nouveau mot de passe"})
-    )
-    new_password2 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Confirmation du mot de passe"}
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["old_password"].widget.attrs.update(
+            {"placeholder": "Ancien mot de passe"}
         )
-    )
+        self.fields["new_password1"].widget.attrs.update(
+            {"placeholder": "Nouveau mot de passe"}
+        )
+        self.fields["new_password2"].widget.attrs.update(
+            {"placeholder": "Confirmation du mot de passe"}
+        )

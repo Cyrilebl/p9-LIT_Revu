@@ -158,3 +158,8 @@ hr {
     0 8px 10px -6px rgb(0 0 0 / 0.1);
   background-color: var(--card);
 }
+
+.success {
+  color: var(--succes);
+  margin-top: 10px;
+}

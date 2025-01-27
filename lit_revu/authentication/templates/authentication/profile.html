@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'authentication/profile.css' %}" />
+<link rel="stylesheet" href="{% static 'authentication/css/profile.css' %}" />
 {% endblock %}
 
 {% block content %}
+
+{% if messages %}
+<div class="card">
+  <img
+    src="{% static 'authentication/images/checked-icon.png' %}"
+    alt="Icône de confirmation avec une coche"
+  />
+  {% for message in messages %}
+    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
 <div id="profile" class="secondary-card">
   <dl class="profile__info">
     <div>

@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
+{% block body_class %}centered{% endblock %}
 {% load static %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'authentication/login.css' %}" />
+<link rel="stylesheet" href="{% static 'authentication/css/login.css' %}" />
 {% endblock %}
 
 {% block content %}
+
+{% if messages %}
+<div class="card">
+  <img
+    src="{% static 'authentication/images/checked-icon.png' %}"
+    alt="Icône de confirmation avec une coche"
+  />
+  {% for message in messages %}
+    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
 <div id="login" class="card">
   <h2>Rejoignez la discussion !</h2>
   <p>Demandez et partagez des avis sur <br/>vos sujets littéraires préférés</p>
