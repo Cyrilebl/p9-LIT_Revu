@@ -1,4 +1,4 @@
-![LITRevu banner](assets/LIT_revu_banner.png)
+![LITRevu banner](images/LIT_revu_banner.png)
 
 ## 1. Fonctionnalités
 

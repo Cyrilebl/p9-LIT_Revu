@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'reviews/ticket.css' %}" />
+<link rel="stylesheet" href="{% static 'reviews/css/ticket.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
   {% else %}
   <div class="card no-content">
     <img
-      src="{% static 'images/oops-icon.png' %}"
+      src="{% static 'reviews/images/oops-icon.png' %}"
       alt="Visage désolé indiquant qu'il n'y a pas de contenu disponible"
     />
     <p>Aucune publication pour le moment</p>

@@ -15,10 +15,10 @@
       {% if request.user == review.user %}
       <div class="ticket-review__header--icons">
         <a href="{% url 'review_update' review.id %}" aria-label="Modifier ce commentaire">
-          <img src="{% static 'images/edit-icon.png' %}" alt=""/>
+          <img src="{% static 'reviews/images/edit-icon.png' %}" alt=""/>
         </a>
         <a href="{% url 'review_delete' review.id %}" aria-label="Supprimer ce commentaire">
-          <img src="{% static 'images/cross-icon.png' %}" alt="" />
+          <img src="{% static 'reviews/images/cross-icon.png' %}" alt="" />
         </a>
       </div>
       {% endif %}
