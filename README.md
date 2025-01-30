@@ -13,7 +13,7 @@ L’application **LITRevu** permet de :
 1. Récupération du projet :
 
 ```bash
-$ git clone https://github.com/Cyrilebl/p9-LIT_Revu.git
+git clone https://github.com/Cyrilebl/p9-LIT_Revu.git
 ```
 
 2. Création et activation de l'environnement virtuel :
@@ -21,29 +21,29 @@ $ git clone https://github.com/Cyrilebl/p9-LIT_Revu.git
 - #### Windows :
 
 ```bash
-$ cd p9-LIT_Revu
-$ python -m venv env
-$ ~env\Scripts\activate
+cd p9-LIT_Revu
+python -m venv env
+~env\Scripts\activate
 ```
 
 - #### MacOS/Linux :
 
 ```bash
-$ cd p9-LIT_Revu
-$ python3 -m venv env
-$ source env/bin/activate
+cd p9-LIT_Revu
+python3 -m venv env
+source env/bin/activate
 ```
 
 3. Installation des dépendances :
 
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 4. Lancement du serveur :
 
 ```bash
-$ python manage.py runserver
+python manage.py runserver
 ```
 
 > **Remarque** : Sur certains systèmes (notamment Linux/MacOS), la commande `python` peut ne pas fonctionner.Utilisez `python3` à la place.
