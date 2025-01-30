@@ -43,10 +43,9 @@ pip install -r requirements.txt
 4. Lancement du serveur :
 
 ```bash
+cd lit_revu
 python manage.py runserver
 ```
-
-> **Remarque** : Sur certains systèmes (notamment Linux/MacOS), la commande `python` peut ne pas fonctionner.Utilisez `python3` à la place.
 
 5. Lien vers l'application :
 
